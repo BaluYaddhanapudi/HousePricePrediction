@@ -85,6 +85,7 @@ def main():
                 for j in range(len(data_list)):
                     for i in range(len(key_list)):
                         print("This is j", j, "This is i", i)
+                        #result[key_list[i]] = data_list[j][i]
                         result[key_list[i]] = data_list[j][i]
 
                     print("After converting:")
