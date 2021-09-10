@@ -2,7 +2,8 @@
 
 """Consumes stream for printing all messages to the console.
 """
-
+from model import preproc
+import pandas as pd
 import argparse
 import json
 import sys
@@ -16,7 +17,20 @@ def msg_process(msg):
     time_start = time.strftime("%Y-%m-%d %H:%M:%S")
     val = msg.value()
     dval = json.loads(val)
-    print(time_start, dval)
+    #print(time_start, dval)
+
+    #print(type(dval))
+
+    #Converting into Pandas Data Frame
+    df = pd.DataFrame(dval, index=[0])
+    # df = pd.read_json(dval)
+    #print(df.info())
+    #print(df)
+    df.to_csv('temp.csv', index=False)
+    tmp = pd.read_csv('temp.csv')
+    print("Pushing data into Model")
+    preproc(tmp)
+
 
 
 def main():
