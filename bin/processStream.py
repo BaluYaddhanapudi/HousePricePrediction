@@ -26,9 +26,12 @@ def msg_process(msg):
     # df = pd.read_json(dval)
     #print(df.info())
     #print(df)
-    df.to_csv('temp.csv', index=False)
-    tmp = pd.read_csv('temp.csv')
+    df.drop('SalePrice', inplace=True, axis=1)
+    df.to_csv('../data/temp.csv', index=False)
+    tmp = pd.read_csv('../data/test.csv')
+
     print("Pushing data into Model")
+
     preproc(tmp)
 
 
